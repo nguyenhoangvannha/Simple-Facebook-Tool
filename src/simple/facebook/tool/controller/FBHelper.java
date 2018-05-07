@@ -113,4 +113,19 @@ public class FBHelper {
         }
         return posts.toString();
     }
+    public static String getHomePosts(FacebookClient facebookClient, String feedId, long num_posts)
+    {
+        StringBuilder posts = new StringBuilder();
+        Connection<Post> myFeed = facebookClient.fetchConnection(feedId + "/home", Post.class);
+        int count = 0;
+        for (List<Post> myFeedPage : myFeed) {
+            for (Post post : myFeedPage) {
+                if(count == num_posts) return posts.toString();
+                count++;
+                posts.append(getPostsDetails(post));
+                //facebookClient.publish(post.getId()+"/likes", Boolean.class);
+            }
+        }
+        return posts.toString();
+    }
 }

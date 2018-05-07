@@ -8,8 +8,10 @@ package simple.facebook.tool.view;
 import com.restfb.Connection;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
+import com.restfb.types.Comment;
 import com.restfb.types.Post;
 import com.restfb.types.User;
+import static java.lang.System.out;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -83,22 +85,30 @@ public class MainActivity extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        tab1Max = new javax.swing.JTextField();
+        tab1MaxHelp = new javax.swing.JButton();
+        tab1GetPosts = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton6 = new javax.swing.JButton();
+        tab1ReactionOptions = new javax.swing.JComboBox<>();
+        tab1GoReact = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        tab1Comment = new javax.swing.JTextArea();
         jButton11 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        tab1OnlyCommentID = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        tab1GoComment = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        tab2ID = new javax.swing.JTextField();
+        tab1MaxHelp1 = new javax.swing.JButton();
+        tab2GetComments = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        tab2ReactionOptions = new javax.swing.JComboBox<>();
+        tab2GoReact = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         proStatus = new javax.swing.JProgressBar();
@@ -340,33 +350,48 @@ public class MainActivity extends javax.swing.JFrame {
 
         jLabel4.setText(bundle.getString("MainActivity.jLabel4.text")); // NOI18N
 
-        jTextField3.setText(bundle.getString("MainActivity.jTextField3.text")); // NOI18N
+        tab1Max.setText(bundle.getString("MainActivity.tab1Max.text")); // NOI18N
 
-        jButton4.setText(bundle.getString("MainActivity.jButton4.text")); // NOI18N
+        tab1MaxHelp.setText(bundle.getString("MainActivity.tab1MaxHelp.text")); // NOI18N
 
-        jButton5.setText(bundle.getString("MainActivity.jButton5.text")); // NOI18N
+        tab1GetPosts.setText(bundle.getString("MainActivity.tab1GetPosts.text")); // NOI18N
+        tab1GetPosts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab1GetPostsActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText(bundle.getString("MainActivity.jLabel5.text")); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Like", "Love", "Haha", "Wow", "Sad", "Angry" }));
+        tab1ReactionOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Like", "Love", "Haha", "Wow", "Sad", "Angry" }));
 
-        jButton6.setText(bundle.getString("MainActivity.jButton6.text")); // NOI18N
+        tab1GoReact.setText(bundle.getString("MainActivity.tab1GoReact.text")); // NOI18N
+        tab1GoReact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab1GoReactActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText(bundle.getString("MainActivity.jLabel11.text")); // NOI18N
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        tab1Comment.setColumns(20);
+        tab1Comment.setRows(5);
+        jScrollPane3.setViewportView(tab1Comment);
 
         jButton11.setText(bundle.getString("MainActivity.jButton11.text")); // NOI18N
 
         jLabel12.setText(bundle.getString("MainActivity.jLabel12.text")); // NOI18N
 
-        jTextField5.setText(bundle.getString("MainActivity.jTextField5.text")); // NOI18N
+        tab1OnlyCommentID.setText(bundle.getString("MainActivity.tab1OnlyCommentID.text")); // NOI18N
 
         jButton12.setText(bundle.getString("MainActivity.jButton12.text")); // NOI18N
 
-        jButton13.setText(bundle.getString("MainActivity.jButton13.text")); // NOI18N
+        tab1GoComment.setText(bundle.getString("MainActivity.tab1GoComment.text")); // NOI18N
+        tab1GoComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab1GoCommentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -386,10 +411,10 @@ public class MainActivity extends javax.swing.JFrame {
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tab1OnlyCommentID, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton12))
-                            .addComponent(jButton13))))
+                            .addComponent(tab1GoComment))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -405,10 +430,10 @@ public class MainActivity extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tab1OnlyCommentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addComponent(jButton13)))
+                        .addComponent(tab1GoComment)))
                 .addContainerGap())
         );
 
@@ -420,17 +445,17 @@ public class MainActivity extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .addComponent(tab1Max, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(tab1MaxHelp)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(tab1GetPosts)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tab1ReactionOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(tab1GoReact)
                 .addGap(323, 323, 323))
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -440,12 +465,12 @@ public class MainActivity extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
+                    .addComponent(tab1Max, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab1MaxHelp)
+                    .addComponent(tab1GetPosts)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
+                    .addComponent(tab1ReactionOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab1GoReact))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -470,15 +495,81 @@ public class MainActivity extends javax.swing.JFrame {
 
         jTabbedPane1.addTab(bundle.getString("MainActivity.jPanel4.TabConstraints.tabTitle"), jPanel4); // NOI18N
 
+        jLabel7.setText(bundle.getString("MainActivity.jLabel7.text")); // NOI18N
+
+        tab2ID.setText(bundle.getString("MainActivity.tab2ID.text")); // NOI18N
+
+        tab1MaxHelp1.setText(bundle.getString("MainActivity.tab1MaxHelp1.text")); // NOI18N
+
+        tab2GetComments.setText(bundle.getString("MainActivity.tab2GetComments.text")); // NOI18N
+        tab2GetComments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab2GetCommentsActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText(bundle.getString("MainActivity.jLabel14.text")); // NOI18N
+
+        tab2ReactionOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Like", "Love", "Haha", "Wow", "Sad", "Angry" }));
+
+        tab2GoReact.setText(bundle.getString("MainActivity.tab2GoReact.text")); // NOI18N
+        tab2GoReact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab2GoReactActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tab2ID, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tab1MaxHelp1)
+                .addGap(18, 18, 18)
+                .addComponent(tab2GetComments)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tab2ReactionOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tab2GoReact)
+                .addGap(124, 124, 124))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(tab2ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab1MaxHelp1)
+                    .addComponent(tab2GetComments)
+                    .addComponent(jLabel14)
+                    .addComponent(tab2ReactionOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab2GoReact))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 198, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(bundle.getString("MainActivity.jPanel5.TabConstraints.tabTitle"), jPanel5); // NOI18N
@@ -517,7 +608,7 @@ public class MainActivity extends javax.swing.JFrame {
                     .addComponent(proStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                .addComponent(txtStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -704,7 +795,7 @@ public class MainActivity extends javax.swing.JFrame {
                                     try {
                                         if (postFromId.trim().equals("")) {
                                             FBLog.getFacebookClient().publish(post.getId() + "/comments",
-                                                     String.class, Parameter.with("message", comment));
+                                                    String.class, Parameter.with("message", comment));
                                         } else {
                                             if (post.getFrom().getId().equals(postFromId)) {
                                                 FBLog.getFacebookClient().publish(post.getId() + "/comments", String.class, Parameter.with("message", comment));
@@ -730,6 +821,215 @@ public class MainActivity extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tab0GoCommentActionPerformed
 
+    private void tab1GetPostsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab1GetPostsActionPerformed
+        // TODO add your handling code here:
+        if (validateTab1Input() == true) {
+            resetTab0Data();
+            try {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        StringBuilder posts = new StringBuilder();
+                        User user = FBLog.getFacebookClient().fetchObject("me", User.class);
+                        Connection<Post> myFeed = FBLog.getFacebookClient().fetchConnection(user.getId() + "/home", Post.class);
+                        int count = 0;
+                        for (List<Post> myFeedPage : myFeed) {
+                            for (Post post : myFeedPage) {
+                                if (count == FBLog.getMAX_NUM()) {
+                                    return;
+                                }
+                                count++;
+                                proStatus.setValue(count);
+                                lblStatus.setText(count + "/" + FBLog.getMAX_NUM());
+                                posts.append(getPostsDetails(post));
+                                txtLog.append(getPostsDetails(post));
+                                txtLog.setCaretPosition(txtLog.getDocument().getLength());
+                                //facebookClient.publish(post.getId()+"/likes", Boolean.class););
+                            }
+                        }
+                    }
+                });
+                thread.start();
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_tab1GetPostsActionPerformed
+
+    private void tab1GoCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab1GoCommentActionPerformed
+        // TODO add your handling code here:
+        if (validateTab1Input() == true) {
+            String comment = tab1Comment.getText();
+            if (comment.equals("")) {
+                DialogUtils.showMessage(this, "Error", "Comment cannot empty");
+                return;
+            }
+            String postFromId = tab1OnlyCommentID.getText();
+            resetTab0Data();
+            try {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        StringBuilder posts = new StringBuilder();
+                        User user = FBLog.getFacebookClient().fetchObject("me", User.class);
+                        Connection<Post> myFeed = FBLog.getFacebookClient().fetchConnection(user.getId() + "/home", Post.class);
+                        int count = 0;
+                        for (List<Post> myFeedPage : myFeed) {
+                            for (Post post : myFeedPage) {
+                                if (count == FBLog.getMAX_NUM()) {
+                                    return;
+                                }
+                                count++;
+                                proStatus.setValue(count);
+                                lblStatus.setText(count + "/" + FBLog.getMAX_NUM());
+                                posts.append(getPostsDetails(post));
+                                txtLog.append(getPostsDetails(post));
+                                txtLog.setCaretPosition(txtLog.getDocument().getLength());
+                                try {
+                                    try {
+                                        if (postFromId.trim().equals("")) {
+                                            FBLog.getFacebookClient().publish(post.getId() + "/comments",
+                                                    String.class, Parameter.with("message", comment));
+                                        } else {
+                                            if (post.getFrom().getId().equals(postFromId)) {
+                                                FBLog.getFacebookClient().publish(post.getId() + "/comments", String.class, Parameter.with("message", comment));
+                                            }
+                                        }
+                                    } catch (Exception ee) {
+                                        DialogUtils.showMessage(MainActivity.this, "Error", "Not found only comment id");
+                                    }
+
+                                } catch (Exception ex) {
+                                    continue;
+                                }
+                                //facebookClient.publish(post.getId()+"/likes", Boolean.class);
+                            }
+                        }
+                    }
+                });
+                thread.start();
+            } catch (Exception ex) {
+
+            }
+        } else {
+        }
+        
+    }//GEN-LAST:event_tab1GoCommentActionPerformed
+
+    private void tab1GoReactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab1GoReactActionPerformed
+        // TODO add your handling code here:
+        if (validateTab1Input() == true) {
+            resetTab0Data();
+            try {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        StringBuilder posts = new StringBuilder();
+                        User user = FBLog.getFacebookClient().fetchObject("me", User.class);
+                        Connection<Post> myFeed = FBLog.getFacebookClient().fetchConnection(user.getId() + "/home", Post.class);
+                        int count = 0;
+                        for (List<Post> myFeedPage : myFeed) {
+                            for (Post post : myFeedPage) {
+                                if (count == FBLog.getMAX_NUM()) {
+                                    return;
+                                }
+                                count++;
+                                proStatus.setValue(count);
+                                lblStatus.setText(count + "/" + FBLog.getMAX_NUM());
+                                posts.append(getPostsDetails(post));
+                                txtLog.append(getPostsDetails(post));
+                                txtLog.setCaretPosition(txtLog.getDocument().getLength());
+                                FBLog.getFacebookClient().publish(post.getId()+"/likes", Boolean.class);
+                            }
+                        }
+                    }
+                });
+                thread.start();
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_tab1GoReactActionPerformed
+
+    private void tab2GetCommentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2GetCommentsActionPerformed
+        // TODO add your handling code here:
+        if (validateTab2Input() == true) {
+            resetTab0Data();
+            String postID = tab2ID.getText();
+            try {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        User user = FBLog.getFacebookClient().fetchObject("me", User.class);
+                        Connection<Post> myFeed = FBLog.getFacebookClient().fetchConnection(user.getId() + "/home", Post.class);
+                        int count = 0;
+                        Connection<Comment> commentConnection = FBLog.getFacebookClient().fetchConnection(postID + "/comments",
+                                Comment.class, Parameter.with("limit", 10));
+                        int max = 0;
+                        for (List<Comment> commentPage : commentConnection) {
+                            for (Comment comment : commentPage) {
+                                max++;
+                            }
+                        }
+                        proStatus.setMaximum(max);
+                        for (List<Comment> commentPage : commentConnection) {
+                            for (Comment comment : commentPage) {
+                                count++;
+                                proStatus.setValue(count);
+                                lblStatus.setText(count + "/" + max);
+                                txtLog.append("\n" + comment.getFrom().getName() + ": " + comment.getMessage());
+                                txtLog.setCaretPosition(txtLog.getDocument().getLength());
+                            }
+                        }
+                    }
+                });
+                thread.start();
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_tab2GetCommentsActionPerformed
+
+    private void tab2GoReactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2GoReactActionPerformed
+        // TODO add your handling code here:
+        if (validateTab2Input() == true) {
+            resetTab0Data();
+            String postID = tab2ID.getText();
+            try {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        User user = FBLog.getFacebookClient().fetchObject("me", User.class);
+                        Connection<Post> myFeed = FBLog.getFacebookClient().fetchConnection(user.getId() + "/home", Post.class);
+                        int count = 0;
+                        Connection<Comment> commentConnection = FBLog.getFacebookClient().fetchConnection(postID + "/comments",
+                                Comment.class, Parameter.with("limit", 10));
+                        int max = 0;
+                        for (List<Comment> commentPage : commentConnection) {
+                            for (Comment comment : commentPage) {
+                                max++;
+                            }
+                        }
+                        proStatus.setMaximum(max);
+                        for (List<Comment> commentPage : commentConnection) {
+                            for (Comment comment : commentPage) {
+                                count++;
+                                proStatus.setValue(count);
+                                lblStatus.setText(count + "/" + max);
+                                txtLog.append("\n" + comment.getFrom().getName() + ": " + comment.getMessage());
+                                txtLog.setCaretPosition(txtLog.getDocument().getLength());
+                                FBLog.getFacebookClient().publish(comment.getId()+"/likes", Boolean.class);
+                            }
+                        }
+                    }
+                });
+                thread.start();
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_tab2GoReactActionPerformed
+
     private boolean validateTab0Input() {
         if (FBLog.getFacebookClient() == null) {
             DialogUtils.showWarning(this, "Error", "Token error");
@@ -740,6 +1040,36 @@ public class MainActivity extends javax.swing.JFrame {
             if (feedId.equals("")) {
                 DialogUtils.showWarning(this, "Error", "You must type the feed target id");
                 tab0ID.requestFocus();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean validateTab1Input() {
+        if (FBLog.getFacebookClient() == null) {
+            DialogUtils.showWarning(this, "Error", "Token error");
+            txtToken.requestFocus();
+            return false;
+        } else {
+            try {
+                int max = Integer.parseInt(tab1Max.getText());
+                FBLog.setMAX_NUM(max);
+            } catch (Exception e) {
+                DialogUtils.showWarning(this, "Error", "Max posts must be a number");
+                return false;
+            }
+        }
+        return true;
+    }
+    private boolean validateTab2Input() {
+        if (FBLog.getFacebookClient() == null) {
+            DialogUtils.showWarning(this, "Error", "Token error");
+            txtToken.requestFocus();
+            return false;
+        } else {
+            if(tab2ID.getText().trim().equals("")){
+                DialogUtils.showWarning(this, "Error", "Post ID cannot empty");
                 return false;
             }
         }
@@ -793,25 +1123,23 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JButton btnTest;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -823,9 +1151,6 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JProgressBar proStatus;
@@ -841,6 +1166,19 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JTextField tab0OnlyComment;
     private javax.swing.JButton tab0OnlyCommentHelp;
     private javax.swing.JComboBox<String> tab0ReactionsOption;
+    private javax.swing.JTextArea tab1Comment;
+    private javax.swing.JButton tab1GetPosts;
+    private javax.swing.JButton tab1GoComment;
+    private javax.swing.JButton tab1GoReact;
+    private javax.swing.JTextField tab1Max;
+    private javax.swing.JButton tab1MaxHelp;
+    private javax.swing.JButton tab1MaxHelp1;
+    private javax.swing.JTextField tab1OnlyCommentID;
+    private javax.swing.JComboBox<String> tab1ReactionOptions;
+    private javax.swing.JButton tab2GetComments;
+    private javax.swing.JButton tab2GoReact;
+    private javax.swing.JTextField tab2ID;
+    private javax.swing.JComboBox<String> tab2ReactionOptions;
     private javax.swing.JTextArea txtLog;
     private javax.swing.JScrollPane txtStatus;
     private javax.swing.JTextField txtToken;
@@ -856,5 +1194,8 @@ public class MainActivity extends javax.swing.JFrame {
         txtToken.setText(FBLog.getTOKEN());
         tab0MaxPost.setText(FBLog.getMAX_NUM() + "");
         tab0ID.setText(FBLog.getTargetUserID());
+        tab1Max.setText(FBLog.getMAX_NUM() + "");
     }
+
+    
 }
