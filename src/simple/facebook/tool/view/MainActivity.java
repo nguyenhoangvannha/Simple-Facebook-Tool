@@ -797,12 +797,17 @@ public class MainActivity extends javax.swing.JFrame {
                                             FBLog.getFacebookClient().publish(post.getId() + "/comments",
                                                     String.class, Parameter.with("message", comment));
                                         } else {
-                                            if (post.getFrom().getId().equals(postFromId)) {
-                                                FBLog.getFacebookClient().publish(post.getId() + "/comments", String.class, Parameter.with("message", comment));
+                                            try {
+                                                if (post.getFrom().getId().equals(postFromId)) {
+                                                    FBLog.getFacebookClient().publish(post.getId() + "/comments", String.class, Parameter.with("message", comment));
+                                                }
+                                            } catch (Exception et) {
+                                                DialogUtils.showMessage(MainActivity.this, "Error", "Not found only comment id");
+                                                return;
                                             }
+
                                         }
                                     } catch (Exception ee) {
-                                        DialogUtils.showMessage(MainActivity.this, "Error", "Not found only comment id");
                                     }
 
                                 } catch (Exception ex) {
@@ -891,12 +896,17 @@ public class MainActivity extends javax.swing.JFrame {
                                             FBLog.getFacebookClient().publish(post.getId() + "/comments",
                                                     String.class, Parameter.with("message", comment));
                                         } else {
-                                            if (post.getFrom().getId().equals(postFromId)) {
+                                            try{
+                                                if (post.getFrom().getId().equals(postFromId)) {
                                                 FBLog.getFacebookClient().publish(post.getId() + "/comments", String.class, Parameter.with("message", comment));
+                                            }
+                                            } catch(Exception et){
+                                                DialogUtils.showMessage(MainActivity.this, "Error", "Not found only comment id");
+                                                return;
                                             }
                                         }
                                     } catch (Exception ee) {
-                                        DialogUtils.showMessage(MainActivity.this, "Error", "Not found only comment id");
+                                        
                                     }
 
                                 } catch (Exception ex) {
@@ -913,7 +923,7 @@ public class MainActivity extends javax.swing.JFrame {
             }
         } else {
         }
-        
+
     }//GEN-LAST:event_tab1GoCommentActionPerformed
 
     private void tab1GoReactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab1GoReactActionPerformed
@@ -939,7 +949,7 @@ public class MainActivity extends javax.swing.JFrame {
                                 posts.append(getPostsDetails(post));
                                 txtLog.append(getPostsDetails(post));
                                 txtLog.setCaretPosition(txtLog.getDocument().getLength());
-                                FBLog.getFacebookClient().publish(post.getId()+"/likes", Boolean.class);
+                                FBLog.getFacebookClient().publish(post.getId() + "/likes", Boolean.class);
                             }
                         }
                     }
@@ -1018,7 +1028,7 @@ public class MainActivity extends javax.swing.JFrame {
                                 lblStatus.setText(count + "/" + max);
                                 txtLog.append("\n" + comment.getFrom().getName() + ": " + comment.getMessage());
                                 txtLog.setCaretPosition(txtLog.getDocument().getLength());
-                                FBLog.getFacebookClient().publish(comment.getId()+"/likes", Boolean.class);
+                                FBLog.getFacebookClient().publish(comment.getId() + "/likes", Boolean.class);
                             }
                         }
                     }
@@ -1062,13 +1072,14 @@ public class MainActivity extends javax.swing.JFrame {
         }
         return true;
     }
+
     private boolean validateTab2Input() {
         if (FBLog.getFacebookClient() == null) {
             DialogUtils.showWarning(this, "Error", "Token error");
             txtToken.requestFocus();
             return false;
         } else {
-            if(tab2ID.getText().trim().equals("")){
+            if (tab2ID.getText().trim().equals("")) {
                 DialogUtils.showWarning(this, "Error", "Post ID cannot empty");
                 return false;
             }
@@ -1197,5 +1208,4 @@ public class MainActivity extends javax.swing.JFrame {
         tab1Max.setText(FBLog.getMAX_NUM() + "");
     }
 
-    
 }
