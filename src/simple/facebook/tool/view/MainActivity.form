@@ -125,6 +125,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtToken">
           <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTokenFocusLost"/>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTokenKeyReleased"/>
           </Events>
         </Component>

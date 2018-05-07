@@ -11,7 +11,6 @@ import com.restfb.Parameter;
 import com.restfb.types.Comment;
 import com.restfb.types.Post;
 import com.restfb.types.User;
-import static java.lang.System.out;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -134,6 +133,11 @@ public class MainActivity extends javax.swing.JFrame {
 
         jLabel1.setText(bundle.getString("MainActivity.jLabel1.text")); // NOI18N
 
+        txtToken.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTokenFocusLost(evt);
+            }
+        });
         txtToken.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTokenKeyReleased(evt);
@@ -1039,6 +1043,11 @@ public class MainActivity extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tab2GoReactActionPerformed
+
+    private void txtTokenFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTokenFocusLost
+        // TODO add your handling code here:
+        FBLog.setTOKEN(txtToken.getText());
+    }//GEN-LAST:event_txtTokenFocusLost
 
     private boolean validateTab0Input() {
         if (FBLog.getFacebookClient() == null) {
