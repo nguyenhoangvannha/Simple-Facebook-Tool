@@ -59,7 +59,8 @@ public class FBHelper {
     public static String getPostsDetails(Post post){
         StringBuilder details = new StringBuilder("\n\n-----------------------------------------------------------");
         details.append("\n|Post Id: " + post.getId());
-        details.append("\n|Ower: " + post.getFrom().getId());
+        details.append("\n|Link: " + post.getLink());
+        details.append("\n|Ower: " + post.getFrom().getId() + " (" + post.getFrom().getName() + ")");
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         details.append("\n|Caption: " + post.getCaption());
         details.append("\n|Time: " + sdf.format(post.getCreatedTime()));
