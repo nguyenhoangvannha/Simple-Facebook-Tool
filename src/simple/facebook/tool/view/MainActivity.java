@@ -1018,13 +1018,8 @@ public class MainActivity extends javax.swing.JFrame {
                         int count = 0;
                         Connection<Comment> commentConnection = FBLog.getFacebookClient().fetchConnection(postID + "/comments",
                                 Comment.class, Parameter.with("limit", 10));
-                        int max = 0;
-                        for (List<Comment> commentPage : commentConnection) {
-                            for (Comment comment : commentPage) {
-                                max++;
-                            }
-                        }
-                        proStatus.setMaximum(max);
+                        long max = commentConnection.getTotalCount();
+                        proStatus.setMaximum((int) max);
                         for (List<Comment> commentPage : commentConnection) {
                             for (Comment comment : commentPage) {
                                 count++;
