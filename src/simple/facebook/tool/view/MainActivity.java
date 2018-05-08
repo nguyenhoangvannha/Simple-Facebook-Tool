@@ -10,8 +10,10 @@ import com.restfb.FacebookClient;
 import com.restfb.Parameter;
 import com.restfb.types.Comment;
 import com.restfb.types.Post;
+import com.restfb.types.Reactions;
 import com.restfb.types.User;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -70,7 +72,7 @@ public class MainActivity extends javax.swing.JFrame {
         tab0MaxPostHelp = new javax.swing.JButton();
         tab0GetPost = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        tab0ReactionsOption = new javax.swing.JComboBox<>();
+        tab0ReactionsOptions = new javax.swing.JComboBox<>();
         tab0Go = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -208,7 +210,12 @@ public class MainActivity extends javax.swing.JFrame {
 
         jLabel8.setText(bundle.getString("MainActivity.jLabel8.text")); // NOI18N
 
-        tab0ReactionsOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Like", "Love", "Haha", "Wow", "Sad", "Angry", "Random" }));
+        tab0ReactionsOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Like", "Love", "Haha", "Wow", "Sad", "Angry", "Random" }));
+        tab0ReactionsOptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab0ReactionsOptionsActionPerformed(evt);
+            }
+        });
 
         tab0Go.setText(bundle.getString("MainActivity.tab0Go.text")); // NOI18N
         tab0Go.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +246,7 @@ public class MainActivity extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tab0ReactionsOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tab0ReactionsOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tab0Go)
                 .addContainerGap())
@@ -251,7 +258,7 @@ public class MainActivity extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
-                        .addComponent(tab0ReactionsOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tab0ReactionsOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(tab0Go))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
@@ -367,7 +374,7 @@ public class MainActivity extends javax.swing.JFrame {
 
         jLabel5.setText(bundle.getString("MainActivity.jLabel5.text")); // NOI18N
 
-        tab1ReactionOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Like", "Love", "Haha", "Wow", "Sad", "Angry" }));
+        tab1ReactionOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Like", "Love", "Haha", "Wow", "Sad", "Angry", "Random" }));
 
         tab1GoReact.setText(bundle.getString("MainActivity.tab1GoReact.text")); // NOI18N
         tab1GoReact.addActionListener(new java.awt.event.ActionListener() {
@@ -449,7 +456,7 @@ public class MainActivity extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tab1Max, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .addComponent(tab1Max, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tab1MaxHelp)
                 .addGap(18, 18, 18)
@@ -738,6 +745,7 @@ public class MainActivity extends javax.swing.JFrame {
                         StringBuilder posts = new StringBuilder();
                         Connection<Post> myFeed = FBLog.getFacebookClient().fetchConnection(feedId + "/feed", Post.class);
                         int count = 0;
+                        Random rd = new Random(6);
                         for (List<Post> myFeedPage : myFeed) {
                             for (Post post : myFeedPage) {
                                 if (count == FBLog.getMAX_NUM()) {
@@ -750,7 +758,23 @@ public class MainActivity extends javax.swing.JFrame {
                                 txtLog.append(getPostsDetails(post));
                                 txtLog.setCaretPosition(txtLog.getDocument().getLength());
                                 try {
-                                    FBLog.getFacebookClient().publish(post.getId() + "/likes", Boolean.class);
+                                    
+                                    int selectedIndex = tab0ReactionsOptions.getSelectedIndex();
+                                    String reaction = "LIKE";
+                                    if(selectedIndex == 6){
+                                        int random = rd.nextInt(6);
+                                        System.out.println("R:" + random);
+                                        reaction = tab0ReactionsOptions.getItemAt(random).toUpperCase();
+                                    } else{
+                                        reaction = tab0ReactionsOptions.getItemAt(selectedIndex).toUpperCase();
+                                    }
+                                    System.out.println(reaction);
+                                    FBLog.getFacebookClient().publish(post.getId() + "/reactions", Reactions.class,
+                                        Parameter.with("type", reaction));
+                                    
+                                    
+                                    //FBLog.getFacebookClient().publish(post.getId() + "/likes", Boolean.class);
+                                    
                                 } catch (Exception ex) {
                                     continue;
                                 }
@@ -942,6 +966,7 @@ public class MainActivity extends javax.swing.JFrame {
                         User user = FBLog.getFacebookClient().fetchObject("me", User.class);
                         Connection<Post> myFeed = FBLog.getFacebookClient().fetchConnection(user.getId() + "/home", Post.class);
                         int count = 0;
+                        Random rd = new Random(6);
                         for (List<Post> myFeedPage : myFeed) {
                             for (Post post : myFeedPage) {
                                 if (count == FBLog.getMAX_NUM()) {
@@ -953,7 +978,25 @@ public class MainActivity extends javax.swing.JFrame {
                                 posts.append(getPostsDetails(post));
                                 txtLog.append(getPostsDetails(post));
                                 txtLog.setCaretPosition(txtLog.getDocument().getLength());
-                                FBLog.getFacebookClient().publish(post.getId() + "/likes", Boolean.class);
+                                try {
+                                    int selectedIndex = tab1ReactionOptions.getSelectedIndex();
+                                    String reaction = "LIKE";
+                                    if(selectedIndex == 6){
+                                        int random = rd.nextInt(6);
+                                        System.out.println("R:" + random);
+                                        reaction = tab1ReactionOptions.getItemAt(random).toUpperCase();
+                                    } else{
+                                        reaction = tab1ReactionOptions.getItemAt(selectedIndex).toUpperCase();
+                                    }
+                                    System.out.println(reaction);
+                                    FBLog.getFacebookClient().publish(post.getId() + "/reactions", Reactions.class,
+                                        Parameter.with("type", reaction));
+                                    
+                                    //FBLog.getFacebookClient().publish(post.getId() + "/likes", Boolean.class);
+                                    
+                                } catch (Exception ex) {
+                                    continue;
+                                }
                             }
                         }
                     }
@@ -1018,8 +1061,13 @@ public class MainActivity extends javax.swing.JFrame {
                         int count = 0;
                         Connection<Comment> commentConnection = FBLog.getFacebookClient().fetchConnection(postID + "/comments",
                                 Comment.class, Parameter.with("limit", 10));
-                        long max = commentConnection.getTotalCount();
-                        proStatus.setMaximum((int) max);
+                        int max = 0;
+                        for (List<Comment> commentPage : commentConnection) {
+                            for (Comment comment : commentPage) {
+                                max++;
+                            }
+                        }
+                        proStatus.setMaximum(max);
                         for (List<Comment> commentPage : commentConnection) {
                             for (Comment comment : commentPage) {
                                 count++;
@@ -1028,6 +1076,8 @@ public class MainActivity extends javax.swing.JFrame {
                                 txtLog.append("\n" + comment.getFrom().getName() + ": " + comment.getMessage());
                                 txtLog.setCaretPosition(txtLog.getDocument().getLength());
                                 FBLog.getFacebookClient().publish(comment.getId() + "/likes", Boolean.class);
+//                                FBLog.getFacebookClient().publish(comment.getId() + "/reactions", Reactions.class,
+//                                        Parameter.with("type", "LOVE"));
                             }
                         }
                     }
@@ -1043,6 +1093,10 @@ public class MainActivity extends javax.swing.JFrame {
         // TODO add your handling code here:
         FBLog.setTOKEN(txtToken.getText());
     }//GEN-LAST:event_txtTokenFocusLost
+
+    private void tab0ReactionsOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab0ReactionsOptionsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tab0ReactionsOptionsActionPerformed
 
     private boolean validateTab0Input() {
         if (FBLog.getFacebookClient() == null) {
@@ -1180,7 +1234,7 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JButton tab0MaxPostHelp;
     private javax.swing.JTextField tab0OnlyComment;
     private javax.swing.JButton tab0OnlyCommentHelp;
-    private javax.swing.JComboBox<String> tab0ReactionsOption;
+    private javax.swing.JComboBox<String> tab0ReactionsOptions;
     private javax.swing.JTextArea tab1Comment;
     private javax.swing.JButton tab1GetPosts;
     private javax.swing.JButton tab1GoComment;
