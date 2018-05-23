@@ -12,5 +12,5 @@ import java.awt.Color;
  * @author nguye
  */
 public class GlobalValues {
-    public static Color backgroundColor = Color.decode("#FAFAFA");
+    public static Color backgroundColor = Color.decode("#46494B");
 }

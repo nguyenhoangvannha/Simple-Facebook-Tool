@@ -8,7 +8,9 @@ package simple.facebook.tool.view;
 import com.restfb.Connection;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;
+import com.restfb.types.Album;
 import com.restfb.types.Comment;
+import com.restfb.types.Photo;
 import com.restfb.types.Post;
 import com.restfb.types.Reactions;
 import com.restfb.types.User;
@@ -37,7 +39,7 @@ public class MainActivity extends javax.swing.JFrame {
      */
     public MainActivity() {
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel("com.bulenkov.darcula.DarculaLaf");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(MainActivity.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -110,6 +112,24 @@ public class MainActivity extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         tab2ReactionOptions = new javax.swing.JComboBox<>();
         tab2GoReact = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tab2Comment = new javax.swing.JTextArea();
+        jButton13 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        tab2OnlyCommentID = new javax.swing.JTextField();
+        jButton14 = new javax.swing.JButton();
+        tab2GoComment = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        tab3ID = new javax.swing.JTextField();
+        tab1MaxHelp2 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        tab3ReactionOptions = new javax.swing.JComboBox<>();
+        tab3GoReact = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         proStatus = new javax.swing.JProgressBar();
@@ -566,13 +586,80 @@ public class MainActivity extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel15.setText(bundle.getString("MainActivity.jLabel15.text")); // NOI18N
+
+        tab2Comment.setColumns(20);
+        tab2Comment.setRows(5);
+        jScrollPane4.setViewportView(tab2Comment);
+
+        jButton13.setText(bundle.getString("MainActivity.jButton13.text")); // NOI18N
+
+        jLabel16.setText(bundle.getString("MainActivity.jLabel16.text")); // NOI18N
+
+        tab2OnlyCommentID.setText(bundle.getString("MainActivity.tab2OnlyCommentID.text")); // NOI18N
+
+        jButton14.setText(bundle.getString("MainActivity.jButton14.text")); // NOI18N
+
+        tab2GoComment.setText(bundle.getString("MainActivity.tab2GoComment.text")); // NOI18N
+        tab2GoComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab2GoCommentActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton13))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tab2OnlyCommentID, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton14))
+                            .addComponent(tab2GoComment))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(tab2OnlyCommentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(tab2GoComment)))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -580,10 +667,90 @@ public class MainActivity extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab(bundle.getString("MainActivity.jPanel5.TabConstraints.tabTitle"), jPanel5); // NOI18N
+
+        jLabel17.setText(bundle.getString("MainActivity.jLabel17.text")); // NOI18N
+
+        tab3ID.setText(bundle.getString("MainActivity.tab3ID.text")); // NOI18N
+
+        tab1MaxHelp2.setText(bundle.getString("MainActivity.tab1MaxHelp2.text")); // NOI18N
+
+        jLabel18.setText(bundle.getString("MainActivity.jLabel18.text")); // NOI18N
+
+        tab3ReactionOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Like", "Love", "Haha", "Wow", "Sad", "Angry", "Random" }));
+
+        tab3GoReact.setText(bundle.getString("MainActivity.tab3GoReact.text")); // NOI18N
+        tab3GoReact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab3GoReactActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText(bundle.getString("MainActivity.jLabel19.text")); // NOI18N
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tab3ID, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tab1MaxHelp2)
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tab3ReactionOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tab3GoReact)
+                        .addGap(235, 235, 235))))
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(tab3ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab1MaxHelp2)
+                    .addComponent(jLabel18)
+                    .addComponent(tab3ReactionOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab3GoReact))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab(bundle.getString("MainActivity.jPanel12.TabConstraints.tabTitle"), jPanel12); // NOI18N
 
         jLabel6.setText(bundle.getString("MainActivity.jLabel6.text")); // NOI18N
 
@@ -758,23 +925,20 @@ public class MainActivity extends javax.swing.JFrame {
                                 txtLog.append(getPostsDetails(post));
                                 txtLog.setCaretPosition(txtLog.getDocument().getLength());
                                 try {
-                                    
                                     int selectedIndex = tab0ReactionsOptions.getSelectedIndex();
                                     String reaction = "LIKE";
-                                    if(selectedIndex == 6){
+                                    if (selectedIndex == 6) {
                                         int random = rd.nextInt(6);
                                         System.out.println("R:" + random);
                                         reaction = tab0ReactionsOptions.getItemAt(random).toUpperCase();
-                                    } else{
+                                    } else {
                                         reaction = tab0ReactionsOptions.getItemAt(selectedIndex).toUpperCase();
                                     }
                                     System.out.println(reaction);
                                     FBLog.getFacebookClient().publish(post.getId() + "/reactions", Reactions.class,
-                                        Parameter.with("type", reaction));
-                                    
-                                    
+                                            Parameter.with("type", reaction));
                                     //FBLog.getFacebookClient().publish(post.getId() + "/likes", Boolean.class);
-                                    
+
                                 } catch (Exception ex) {
                                     continue;
                                 }
@@ -924,17 +1088,17 @@ public class MainActivity extends javax.swing.JFrame {
                                             FBLog.getFacebookClient().publish(post.getId() + "/comments",
                                                     String.class, Parameter.with("message", comment));
                                         } else {
-                                            try{
+                                            try {
                                                 if (post.getFrom().getId().equals(postFromId)) {
-                                                FBLog.getFacebookClient().publish(post.getId() + "/comments", String.class, Parameter.with("message", comment));
-                                            }
-                                            } catch(Exception et){
+                                                    FBLog.getFacebookClient().publish(post.getId() + "/comments", String.class, Parameter.with("message", comment));
+                                                }
+                                            } catch (Exception et) {
                                                 DialogUtils.showMessage(MainActivity.this, "Error", "Not found only comment id");
                                                 return;
                                             }
                                         }
                                     } catch (Exception ee) {
-                                        
+
                                     }
 
                                 } catch (Exception ex) {
@@ -981,19 +1145,18 @@ public class MainActivity extends javax.swing.JFrame {
                                 try {
                                     int selectedIndex = tab1ReactionOptions.getSelectedIndex();
                                     String reaction = "LIKE";
-                                    if(selectedIndex == 6){
+                                    if (selectedIndex == 6) {
                                         int random = rd.nextInt(6);
                                         System.out.println("R:" + random);
                                         reaction = tab1ReactionOptions.getItemAt(random).toUpperCase();
-                                    } else{
+                                    } else {
                                         reaction = tab1ReactionOptions.getItemAt(selectedIndex).toUpperCase();
                                     }
                                     System.out.println(reaction);
                                     FBLog.getFacebookClient().publish(post.getId() + "/reactions", Reactions.class,
-                                        Parameter.with("type", reaction));
-                                    
+                                            Parameter.with("type", reaction));
+
                                     //FBLog.getFacebookClient().publish(post.getId() + "/likes", Boolean.class);
-                                    
                                 } catch (Exception ex) {
                                     continue;
                                 }
@@ -1018,6 +1181,8 @@ public class MainActivity extends javax.swing.JFrame {
                     @Override
                     public void run() {
                         User user = FBLog.getFacebookClient().fetchObject("me", User.class);
+                        //Post post = FBLog.getFacebookClient().fetchObject("" + postID, Post.class, Parameter.with("fields", "likes.summary(true),comments.summary(true)"));
+                        //System.out.println("NUM"+ post.getCommentsCount());
                         Connection<Post> myFeed = FBLog.getFacebookClient().fetchConnection(user.getId() + "/home", Post.class);
                         int count = 0;
                         Connection<Comment> commentConnection = FBLog.getFacebookClient().fetchConnection(postID + "/comments",
@@ -1098,6 +1263,122 @@ public class MainActivity extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tab0ReactionsOptionsActionPerformed
 
+    private void tab2GoCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2GoCommentActionPerformed
+        // TODO add your handling code here:
+        DialogUtils.showMessage(this, "Notification", "Updating feature!");
+//        if (validateTab2Input() == true) {
+//            String comment = tab2Comment.getText();
+//            if (comment.equals("")) {
+//                DialogUtils.showMessage(this, "Error", "Comment cannot empty");
+//                return;
+//            }
+//            resetTab0Data();
+//            String postID = tab2ID.getText();
+//            try {
+//                Thread thread = new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Connection<Comment> commentConnection = FBLog.getFacebookClient().fetchConnection(postID + "/comments",
+//                                Comment.class, Parameter.with("limit", 10));
+//                        int max = 0;
+//                        for (List<Comment> commentPage : commentConnection) {
+//                            for (Comment comment : commentPage) {
+//                                max++;
+//                            }
+//                        }
+//                        int count = 0;
+//                        proStatus.setMaximum(max);
+//                        for (List<Comment> commentPage : commentConnection) {
+//                            for (Comment comment : commentPage) {
+//                                count++;
+//                                proStatus.setValue(count);
+//                                lblStatus.setText(count + "/" + max);
+//                                txtLog.append("\n" + comment.getFrom().getName() + ": " + comment.getMessage());
+//                                txtLog.setCaretPosition(txtLog.getDocument().getLength());
+////                                FBLog.getFacebookClient().publish(comment.getId() + "/reactions", Reactions.class,
+////                                        Parameter.with("type", "LOVE"));
+//                               try {
+//                                        if (tab2OnlyCommentID.getText().trim().equals("")) {
+//                                            FBLog.getFacebookClient().publish(comment.getId() + "/comments",
+//                                                    String.class, Parameter.with("message", comment), Parameter.with("parent_object", comment.getId()));
+//                                            DialogUtils.showMessage(MainActivity.this, "abc", "oo");
+//                                        } else {
+//                                            try{
+//                                                if (comment.getFrom().getId().equals(tab2OnlyCommentID.getText().trim())) {
+//                                                FBLog.getFacebookClient().publish(comment.getId() + "/comments", String.class, Parameter.with("message", comment));
+//                                            }
+//                                            } catch(Exception et){
+//                                                DialogUtils.showMessage(MainActivity.this, "Error", "Not found only comment id");
+//                                                return;
+//                                            }
+//                                        }
+//                                    } catch (Exception ee) {
+//                                        System.out.println("abc" + ee);
+//                                    }
+//                            }
+//                        }
+//                    }
+//                });
+//                thread.start();
+//            } catch (Exception ex) {
+//
+//            }
+//        } else {
+//        }
+    }//GEN-LAST:event_tab2GoCommentActionPerformed
+
+    private void tab3GoReactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab3GoReactActionPerformed
+        // TODO add your handling code here:
+        if (validateTab3Input() == true) {
+            resetTab0Data();
+            String albumID = tab3ID.getText();
+            try {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Post post = FBLog.getFacebookClient().fetchObject("" + postID, Post.class, Parameter.with("fields", "likes.summary(true),comments.summary(true)"));
+                        //System.out.println("NUM"+ post.getCommentsCount());
+                        Connection<Photo> myFeed = FBLog.getFacebookClient().fetchConnection(albumID + "/photos", Photo.class);
+                        List<Photo> photos = myFeed.getData();
+                        System.out.println(photos.size());
+                        int photosCount = photos.size();
+                        int count = 0;
+                        proStatus.setMaximum(photosCount);
+                        Random rd = new Random(6);
+                        for (Photo photo : photos) {
+                            proStatus.setValue(count);
+                            count++;
+                            lblStatus.setText(count + "/" + photosCount);
+                            txtLog.append("Photo " + count + ": " + photo.getLink());
+                            txtLog.setCaretPosition(txtLog.getDocument().getLength());
+                            try {
+                                int selectedIndex = tab3ReactionOptions.getSelectedIndex();
+                                String reaction = "LIKE";
+                                if (selectedIndex == 6) {
+                                    int random = rd.nextInt(6);
+                                    System.out.println("R:" + random);
+                                    reaction = tab1ReactionOptions.getItemAt(random).toUpperCase();
+                                } else {
+                                    reaction = tab1ReactionOptions.getItemAt(selectedIndex).toUpperCase();
+                                }
+                                System.out.println(reaction);
+                                FBLog.getFacebookClient().publish(photo.getId() + "/reactions", Reactions.class,
+                                        Parameter.with("type", reaction));
+
+                                //FBLog.getFacebookClient().publish(post.getId() + "/likes", Boolean.class);
+                            } catch (Exception ex) {
+                                continue;
+                            }
+                        }
+                    }
+                });
+                thread.start();
+            } catch (Exception ex) {
+
+            }
+        }
+    }//GEN-LAST:event_tab3GoReactActionPerformed
+
     private boolean validateTab0Input() {
         if (FBLog.getFacebookClient() == null) {
             DialogUtils.showWarning(this, "Error", "Token error");
@@ -1139,6 +1420,20 @@ public class MainActivity extends javax.swing.JFrame {
         } else {
             if (tab2ID.getText().trim().equals("")) {
                 DialogUtils.showWarning(this, "Error", "Post ID cannot empty");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean validateTab3Input() {
+        if (FBLog.getFacebookClient() == null) {
+            DialogUtils.showWarning(this, "Error", "Token error");
+            txtToken.requestFocus();
+            return false;
+        } else {
+            if (tab3ID.getText().trim().equals("")) {
+                DialogUtils.showWarning(this, "Error", "Album ID cannot empty");
                 return false;
             }
         }
@@ -1192,6 +1487,8 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JButton btnTest;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1199,6 +1496,11 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1209,6 +1511,9 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1219,6 +1524,7 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTitle;
@@ -1242,12 +1548,19 @@ public class MainActivity extends javax.swing.JFrame {
     private javax.swing.JTextField tab1Max;
     private javax.swing.JButton tab1MaxHelp;
     private javax.swing.JButton tab1MaxHelp1;
+    private javax.swing.JButton tab1MaxHelp2;
     private javax.swing.JTextField tab1OnlyCommentID;
     private javax.swing.JComboBox<String> tab1ReactionOptions;
+    private javax.swing.JTextArea tab2Comment;
     private javax.swing.JButton tab2GetComments;
+    private javax.swing.JButton tab2GoComment;
     private javax.swing.JButton tab2GoReact;
     private javax.swing.JTextField tab2ID;
+    private javax.swing.JTextField tab2OnlyCommentID;
     private javax.swing.JComboBox<String> tab2ReactionOptions;
+    private javax.swing.JButton tab3GoReact;
+    private javax.swing.JTextField tab3ID;
+    private javax.swing.JComboBox<String> tab3ReactionOptions;
     private javax.swing.JTextArea txtLog;
     private javax.swing.JScrollPane txtStatus;
     private javax.swing.JTextField txtToken;
